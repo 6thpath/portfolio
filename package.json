@@ -28,6 +28,7 @@
     "autoprefixer": "10.4.2",
     "patch-package": "6.4.7",
     "postcss": "8.4.7",
+    "react-snap": "^1.23.0",
     "tailwindcss": "3.0.23"
   },
   "scripts": {
@@ -35,6 +36,7 @@
     "postuninstall": "patch-package",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "lint": "eslint 'src/**/*.{ts,tsx}' --fix --quiet"
   },
   "eslintConfig": {
