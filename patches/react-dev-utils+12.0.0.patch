@@ -1,0 +1,22 @@
+diff --git a/node_modules/react-dev-utils/WebpackDevServerUtils.js b/node_modules/react-dev-utils/WebpackDevServerUtils.js
+index d9eea34..38af34a 100644
+--- a/node_modules/react-dev-utils/WebpackDevServerUtils.js
++++ b/node_modules/react-dev-utils/WebpackDevServerUtils.js
+@@ -168,7 +168,7 @@ function createCompiler({
+     const messages = formatWebpackMessages(statsData);
+     const isSuccessful = !messages.errors.length && !messages.warnings.length;
+     if (isSuccessful) {
+-      console.log(chalk.green('Compiled successfully!'));
++      console.log(chalk.green(`Compiled successfully in${stats.endTime - stats.startTime}ms!`));
+     }
+     if (isSuccessful && (isInteractive || isFirstCompile)) {
+       printInstructions(appName, urls, useYarn);
+@@ -189,7 +189,7 @@ function createCompiler({
+ 
+     // Show warnings if no errors were found.
+     if (messages.warnings.length) {
+-      console.log(chalk.yellow('Compiled with warnings.\n'));
++      console.log(chalk.yellow(`Compiled in ${stats.endTime - stats.startTime}ms with warnings.\n`));
+       console.log(messages.warnings.join('\n\n'));
+ 
+       // Teach some ESLint tricks.

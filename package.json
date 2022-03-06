@@ -1,0 +1,132 @@
+{
+  "name": "@6thpath/portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Phát Mai",
+    "email": "tienphat1501@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/6thpath/portfolio.git"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "5.0.0",
+    "typescript": "4.6.2",
+    "web-vitals": "2.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.26",
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.13",
+    "patch-package": "6.4.7"
+  },
+  "scripts": {
+    "postinstall": "patch-package",
+    "postuninstall": "patch-package",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix --quiet"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ],
+    "rules": {
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "tabWidth": 2,
+          "ignoreComments": true,
+          "ignoreTrailingComments": true,
+          "ignoreUrls": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreRegExpLiterals": true
+        }
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
+      "quote-props": [
+        "error",
+        "as-needed"
+      ],
+      "jsx-quotes": [
+        "error",
+        "prefer-double"
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "react/no-multi-comp": [
+        "error",
+        {
+          "ignoreStateless": true
+        }
+      ],
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "react/jsx-boolean-value": "error",
+      "react/jsx-max-props-per-line": [
+        "warn",
+        {
+          "maximum": 2
+        }
+      ],
+      "react/function-component-definition": [
+        "warn",
+        {
+          "namedComponents": "arrow-function"
+        }
+      ],
+      "react/jsx-handler-names": [
+        "warn",
+        {
+          "eventHandlerPrefix": "handle",
+          "eventHandlerPropPrefix": "on",
+          "checkLocalVariables": true,
+          "checkInlineFunction": true
+        }
+      ],
+      "react/jsx-tag-spacing": "warn"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
