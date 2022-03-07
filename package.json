@@ -101,9 +101,13 @@
       "react/jsx-max-props-per-line": [
         "warn",
         {
-          "maximum": 2
+          "maximum": {
+            "single": 2,
+            "multi": 1
+          }
         }
       ],
+      "react/jsx-props-no-multi-spaces": "warn",
       "react/function-component-definition": [
         "warn",
         {
