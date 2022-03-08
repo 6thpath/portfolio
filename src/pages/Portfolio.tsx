@@ -3,7 +3,7 @@ import { NavBar } from 'components/Navbar'
 import { Section } from 'components/Section'
 import { Sections } from 'types/enums'
 
-const App: React.FC = () => {
+const Portfolio: React.FC = () => {
   return (
     <div className="relative">
       <Background />
@@ -20,4 +20,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default Portfolio

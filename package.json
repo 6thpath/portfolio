@@ -1,6 +1,6 @@
 {
   "name": "@6thpath/portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "author": {
     "name": "Phát Mai",
@@ -16,6 +16,7 @@
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-router-dom": "6.2.2",
     "react-scripts": "5.0.0",
     "recoil": "0.6.1",
     "web-vitals": "2.1.4"
@@ -108,15 +109,6 @@
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
       "react/jsx-boolean-value": "error",
-      "react/jsx-max-props-per-line": [
-        "warn",
-        {
-          "maximum": {
-            "single": 2,
-            "multi": 1
-          }
-        }
-      ],
       "react/jsx-props-no-multi-spaces": "warn",
       "react/function-component-definition": [
         "warn",

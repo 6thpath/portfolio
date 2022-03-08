@@ -1,5 +1,5 @@
 .background {
-  @apply w-full h-[100vh] fixed inset-0;
+  @apply w-full h-screen fixed inset-0;
 
   background: linear-gradient(
     158.86deg,
