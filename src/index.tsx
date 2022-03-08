@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { hydrate, render } from 'react-dom'
-
+import { RecoilRoot } from 'recoil'
 import 'css/global.css'
 
 import App from 'App'
@@ -13,9 +13,11 @@ if (rootElement?.hasChildNodes()) {
 } else {
   render(
     <StrictMode>
-      <App />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </StrictMode>,
-    rootElement,
+    rootElement
   )
 }
 

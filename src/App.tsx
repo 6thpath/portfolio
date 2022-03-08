@@ -1,24 +1,21 @@
-import { ReactComponent as Logo } from './logo.svg'
+import { Background } from 'components/Background'
+import { NavBar } from 'components/Navbar'
+import { Section } from 'components/Section'
+import { Sections } from 'types/enums'
 
-import './App.css'
-
-var App = () => {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Logo className="App-logo" />
-        <p className="p-[20px]">
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="relative">
+      <Background />
+
+      <NavBar />
+
+      <main>
+        <Section id={Sections.About} />
+        <Section id={Sections.Projects} />
+        <Section id={Sections.Resume} />
+        <Section id={Sections.Contact} />
+      </main>
     </div>
   )
 }

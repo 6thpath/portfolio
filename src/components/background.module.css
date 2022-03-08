@@ -1,0 +1,10 @@
+.background {
+  @apply w-full h-[100vh] fixed inset-0;
+
+  background: linear-gradient(
+    158.86deg,
+    #1c2a34 10.36%,
+    #111a20 49.58%,
+    #111a20 49.58%
+  );
+}

@@ -2,9 +2,13 @@
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
+    fontFamily: {
+      primary: ['Jost'],
+      secondary: ['Cabin'],
+    },
     extend: {
-      fontFamily: {
-        sans: ['Jost'],
+      colors: {
+        primary: '#F36B50',
       },
     },
   },
