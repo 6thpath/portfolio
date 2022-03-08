@@ -18,7 +18,7 @@ export const Router: React.FC = () => {
             </Suspense>
           }
         />
-        <Route element={NotFound} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
