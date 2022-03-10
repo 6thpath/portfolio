@@ -2,14 +2,14 @@ import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 
 import { Sections } from 'types/enums'
-import { uiState } from 'core/store'
+import { currentSectionState } from 'core/store'
 
 type Props = {
   id: Sections
 }
 
 export const Section: React.FC<Props> = ({ id }) => {
-  const setCurrentSection = useSetRecoilState(uiState)
+  const setCurrentSection = useSetRecoilState(currentSectionState)
 
   useEffect(() => {
     const observeElement = document.getElementById(id)
@@ -18,13 +18,13 @@ export const Section: React.FC<Props> = ({ id }) => {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.intersectionRatio >= 0.8) {
-              setCurrentSection((state) => ({ ...state, currentSection: id }))
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.8) {
+              setCurrentSection(id)
             }
           })
         },
         {
-          threshold: 0.8,
+          threshold: 0.9,
         }
       )
       observer.observe(observeElement)

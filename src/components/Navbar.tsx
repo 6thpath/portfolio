@@ -1,55 +1,35 @@
-import { ReactComponent as ButtonBorder } from 'assets/svg/button-border.svg'
+import { ReactComponent as FocusOrnament } from 'assets/svg/focus-ornament.svg'
 import { useRecoilValue } from 'recoil'
 
-import { uiState } from 'core/store'
-import { Sections } from 'types/enums'
+import { currentSectionState } from 'core/store'
 import { information } from 'data/information'
 
-export const NavBar: React.FC = () => {
-  const { currentSection } = useRecoilValue(uiState)
+type NavBarItem<T> = {
+  label: T
+  handleClick: () => void
+}
 
-  function scrollTo(idOrOffset: Sections | number) {
-    if (typeof idOrOffset === 'number') {
-      return window.scrollTo({ top: idOrOffset, behavior: 'smooth' })
-    }
+export type Props<T> = {
+  navBarItems: NavBarItem<T>[]
+}
 
-    const element = document.getElementById(idOrOffset)
+export const NavBar = <T extends string>({ navBarItems }: Props<T>): React.ReactElement | null => {
+  const currentSection = useRecoilValue(currentSectionState)
 
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const navBarItems = [
-    {
-      label: Sections.About,
-      handleClick: () => scrollTo(0),
-    },
-    {
-      label: Sections.Projects,
-      handleClick: () => scrollTo(Sections.Projects),
-    },
-    {
-      label: Sections.Resume,
-      handleClick: () => scrollTo(Sections.Resume),
-    },
-    {
-      label: Sections.Contact,
-      handleClick: () => scrollTo(Sections.Contact),
-    },
-  ]
-
-  const borderRightPosition = (3 - navBarItems.findIndex((item) => item.label === currentSection)) * 100
+  const totalItems = navBarItems.length
+  const borderRightPosition = (totalItems - 1 - navBarItems.findIndex((item) => item.label === currentSection)) * 100
 
   return (
-    <header className="sticky top-[30px] container mx-auto h-[60px] flex justify-between items-center transition-all">
-      <div className="flex justify-start items-center gap-[10px]">
+    <header className="container h-[60px] fixed top-[30px] right-0 left-0 flex justify-between items-center mx-auto z-10">
+      <div className="flex justify-start items-center gap-[10px] bg-black">
         <div className="cursor-pointer w-[60px] h-[60px] flex justify-center items-center bg-primary">
-          <span className="font-secondary font-bold text-[14px] leading-[20px] text-white">{information.tagName}</span>
+          <span className="select-none font-secondary font-bold text-[14px] leading-[20px] text-white">
+            {information.tagName}
+          </span>
         </div>
       </div>
 
-      <div className="relative flex j_ustify-end items-center gap-[10px]">
+      <div className="relative flex justify-end items-center gap-[10px]">
         {navBarItems.map((item) => (
           <button
             className="min-w-[90px] h-[30px] flex justify-center items-center px-[10px]"
@@ -61,12 +41,14 @@ export const NavBar: React.FC = () => {
           </button>
         ))}
 
-        <div
-          className="pointer-events-none w-[90px] h-[30px] absolute transition-all duration-200"
-          style={{ right: borderRightPosition }}
-        >
-          <ButtonBorder />
-        </div>
+        {totalItems > 0 && (
+          <div
+            className="pointer-events-none w-[90px] h-[30px] absolute transition-all duration-200"
+            style={{ right: borderRightPosition }}
+          >
+            <FocusOrnament />
+          </div>
+        )}
       </div>
     </header>
   )

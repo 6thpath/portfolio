@@ -1,21 +1,14 @@
 @import "fonts";
+@import "smooth-scrollbar";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply m-0 font-primary no-scrollbar;
+  @apply m-0 font-primary;
 }
