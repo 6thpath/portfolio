@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup node
         uses: actions/setup-node@v2
@@ -24,4 +26,6 @@ jobs:
 
       - name: Deploy Github pages
         run: |
+          git config user.name "Phát Mai"
+          git config user.email "tienphat1501@gmail.com"
           yarn deploy

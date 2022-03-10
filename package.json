@@ -55,7 +55,7 @@
     "postbuild": "react-snap",
     "lint": "eslint 'src/**/*.{ts,tsx}' --fix --quiet",
     "predeploy": "react-scripts build",
-    "deploy": "gh-pages -d build -u 'Phát Mai <tienphat1501@gmail.com>'"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "ignorePatterns": [
