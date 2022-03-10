@@ -1,0 +1,23 @@
+<svg
+  width="36"
+  height="36"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-opacity="0.8"
+  stroke-width="1"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <polygon points="12 8, 18 18, 6 18">
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      begin="0s"
+      dur="20s"
+      type="rotate"
+      from="0 12 12"
+      to="360 12 12"
+      repeatCount="indefinite"
+    />
+  </polygon>
+</svg>
