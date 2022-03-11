@@ -28,4 +28,4 @@ jobs:
           git config user.email "tienphat1501@gmail.com"
           yarn deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

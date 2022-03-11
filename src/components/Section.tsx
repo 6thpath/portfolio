@@ -24,7 +24,7 @@ export const Section: React.FC<Props> = ({ id }) => {
           })
         },
         {
-          threshold: 0.9,
+          threshold: 0.8,
         }
       )
       observer.observe(observeElement)
