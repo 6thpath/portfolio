@@ -53,10 +53,14 @@ export const Background: React.FC<Props> = ({
   )
 
   useEffect(() => {
-    if (scene.current && width > 640) {
-      new Parallax(scene.current, { hoverOnly: true })
+    if (scene.current && width >= 768) {
+      const parallaxInstance = new Parallax(scene.current, { hoverOnly: true })
+
+      return () => {
+        parallaxInstance.destroy()
+      }
     }
-  }, [])
+  }, [width])
 
   return (
     <div className={styles['_container']}>
