@@ -1,18 +1,21 @@
-import { useRef, useEffect, useMemo } from 'react'
+import { useRef, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import Scrollbar from 'smooth-scrollbar'
 
 import { useWindowResize } from 'hooks/useWindowResize'
 import { easeInOutCubic } from 'utils/easing'
+import { Sections } from 'types/enums'
 
 import { Background } from 'components/Background'
 import { NavBar } from 'components/Navbar'
 import { Section } from 'components/Section'
-import { Sections } from 'types/enums'
 
 const Portfolio: React.FC = () => {
   useWindowResize()
 
+  const location = useLocation()
+  const navigate = useNavigate()
   const containerRef = useRef<HTMLElement>(null)
   const scrollRef = useRef<Scrollbar>()
 
@@ -24,27 +27,13 @@ const Portfolio: React.FC = () => {
     }
   }
 
-  const sections = useMemo(
-    () => [
-      {
-        label: Sections.About,
-        handleClick: () => scrollTo(Sections.About),
-      },
-      {
-        label: Sections.Projects,
-        handleClick: () => scrollTo(Sections.Projects),
-      },
-      {
-        label: Sections.Resume,
-        handleClick: () => scrollTo(Sections.Resume),
-      },
-      {
-        label: Sections.Contact,
-        handleClick: () => scrollTo(Sections.Contact),
-      },
-    ],
-    []
-  )
+  function onBrandClick() {
+    if (location.pathname !== '/') {
+      navigate('/')
+    } else {
+      scrollTo(Sections.About)
+    }
+  }
 
   useEffect(() => {
     if (containerRef.current) {
@@ -57,11 +46,33 @@ const Portfolio: React.FC = () => {
         scrollRef.current = undefined
       }
     }
-  }, [sections])
+  }, [])
+
+  const sections = [
+    {
+      label: Sections.About,
+      handleClick: () => scrollTo(Sections.About),
+    },
+    {
+      label: Sections.Projects,
+      handleClick: () => scrollTo(Sections.Projects),
+    },
+    {
+      label: Sections.Resume,
+      handleClick: () => scrollTo(Sections.Resume),
+    },
+    {
+      label: Sections.Contact,
+      handleClick: () => scrollTo(Sections.Contact),
+    },
+  ]
 
   return (
     <Background>
-      <NavBar navBarItems={sections.map(({ label, handleClick }) => ({ label, handleClick }))} />
+      <NavBar
+        handleBrandClick={onBrandClick}
+        navBarItems={sections.map(({ label, handleClick }) => ({ label, handleClick }))}
+      />
 
       <main className="h-screen" ref={containerRef}>
         {sections.map((section) => (

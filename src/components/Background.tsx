@@ -53,7 +53,7 @@ export const Background: React.FC<Props> = ({
   )
 
   useEffect(() => {
-    if (scene.current) {
+    if (scene.current && width > 640) {
       new Parallax(scene.current, { hoverOnly: true })
     }
   }, [])

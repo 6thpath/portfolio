@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 
-import { Sections } from 'types/enums'
 import { currentSectionState } from 'core/store'
+import { Sections } from 'types/enums'
 
 type Props = {
   id: Sections
