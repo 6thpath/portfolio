@@ -24,6 +24,8 @@ export const Section: React.FC<Props> = ({ id }) => {
           })
         },
         {
+          root: null,
+          rootMargin: '0px',
           threshold: 0.8,
         }
       )
