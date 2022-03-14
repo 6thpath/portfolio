@@ -66,7 +66,11 @@ export const Background: React.FC<Props> = ({
     <div className={styles['_container']}>
       <div className=" w-full h-full absolute opacity-70" ref={scene}>
         {decorationsConfig.map(({ type, Component, total }) => (
-          <div className="w-full h-full" key={type} data-depth={Math.random() * (0.8 - 0.2) + 0.2}>
+          <div
+            className="w-full h-full"
+            key={type}
+            data-depth={(Math.random() * (0.8 - 0.2) + 0.2) * (Math.random() < 0.5 ? -1 : 1)}
+          >
             {Array.from({ length: total }, (_, index) => (
               <div
                 key={index}
