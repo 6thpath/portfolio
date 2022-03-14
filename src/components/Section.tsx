@@ -38,7 +38,7 @@ export const Section: React.FC<Props> = ({ id }) => {
   }, [id, setCurrentSection])
 
   return (
-    <section className="h-screen" id={id}>
+    <section className="h-screen pt-[92px]" id={id}>
       {id}
     </section>
   )
