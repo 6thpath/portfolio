@@ -59,15 +59,12 @@ const Portfolio: React.FC = () => {
     label: section,
     withHeading: withHeadingSections.indexOf(section) > -1,
     content: sectionBody[section],
-    handleClick: () => scrollTo(section),
+    onClick: () => scrollTo(section),
   }))
 
   return (
     <Background>
-      <NavBar
-        handleBrandClick={onBrandClick}
-        navBarItems={sections.map(({ label, handleClick }) => ({ label, handleClick }))}
-      />
+      <NavBar onBrandClick={onBrandClick} navBarItems={sections.map(({ label, onClick }) => ({ label, onClick }))} />
 
       <Contacts />
 

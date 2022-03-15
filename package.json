@@ -132,7 +132,7 @@
       "react/jsx-handler-names": [
         "warn",
         {
-          "eventHandlerPrefix": "handle",
+          "eventHandlerPrefix": "on",
           "eventHandlerPropPrefix": "on",
           "checkLocalVariables": true,
           "checkInlineFunction": true
