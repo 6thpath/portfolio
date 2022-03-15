@@ -7,6 +7,10 @@ import 'css/global.css'
 import { Router } from 'Router'
 import reportWebVitals from 'reportWebVitals'
 
+import { registerAllWebComponents } from 'components/web-components'
+
+registerAllWebComponents()
+
 const rootElement = document.getElementById('root')
 
 const App: React.FC = () => {

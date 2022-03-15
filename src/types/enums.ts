@@ -1,6 +1,9 @@
 export enum Sections {
   About = 'About',
   Projects = 'Projects',
-  Resume = 'Resume',
-  Contact = 'Contact',
+}
+
+export enum ContactType {
+  Github = 'Github',
+  LinkedIn = 'LinkedIn',
 }

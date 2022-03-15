@@ -33,6 +33,7 @@ export const Background: React.FC<Props> = ({
   const { width, height } = useRecoilValue(windowDimensionState)
 
   const scene = useRef<HTMLDivElement>(null)
+  const parallaxRef = useRef<Parallax>()
 
   const ratio = 1 / decorationTypes.length
   const totalCircles = useMemo(() => Math.ceil(Math.random() * (decorations * ratio)), [decorations, ratio])
@@ -53,11 +54,14 @@ export const Background: React.FC<Props> = ({
   )
 
   useEffect(() => {
-    if (scene.current && width >= 768) {
+    if (scene.current && parallaxRef.current === undefined && width >= 768) {
       const parallaxInstance = new Parallax(scene.current, { hoverOnly: true })
+
+      parallaxRef.current = parallaxInstance
 
       return () => {
         parallaxInstance.destroy()
+        parallaxRef.current = undefined
       }
     }
   }, [width])

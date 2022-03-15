@@ -4,9 +4,8 @@ import clsx from 'clsx'
 import { Menu, Transition } from '@headlessui/react'
 
 import { currentSectionState } from 'core/store'
-import { information } from 'data/information'
 
-import { ReactComponent as MenuIcon } from 'assets/svg/menu.svg'
+import { ReactComponent as IconMenu } from 'assets/svg/menu.svg'
 
 type NavBarItem<T> = {
   label: T
@@ -25,14 +24,14 @@ export const NavBar = <T extends string>({ handleBrandClick, navBarItems }: Prop
   const borderRightPosition = (totalItems - 1 - navBarItems.findIndex((item) => item.label === currentSection)) * 100
 
   return (
-    <header className="container h-[60px] fixed top-[16px] md:top-[30px] right-0 left-0 flex justify-between items-center mx-auto px-[16px] z-10 transition-all">
+    <header className="container h-[60px] fixed top-[16px] md:top-[30px] inset-x-0 z-10 flex justify-between items-center mx-auto px-[16px] transition-all">
       <div className="flex justify-start items-center">
         <div
           className="cursor-pointer w-[60px] h-[60px] flex justify-center items-center rounded-[2px] bg-primary"
           onClick={handleBrandClick}
         >
-          <span className="select-none font-secondary font-bold text-[14px] leading-[20px] text-white">
-            {information.tagName}
+          <span className="select-none font-secondary font-bold text-[12px] leading-[16px] text-white">
+            <sixth-path />
           </span>
         </div>
       </div>
@@ -40,8 +39,8 @@ export const NavBar = <T extends string>({ handleBrandClick, navBarItems }: Prop
       <div>
         <div className="relative flex md:hidden justify-end items-center">
           <Menu>
-            <Menu.Button className="w-[60px] h-[60px] flex justify-center items-center text-primary">
-              <MenuIcon width={40} height={40} />
+            <Menu.Button className="w-[60px] h-[60px] flex justify-center items-center focus:outline-none text-primary">
+              <IconMenu width={40} height={40} />
             </Menu.Button>
 
             <Transition
@@ -52,7 +51,7 @@ export const NavBar = <T extends string>({ handleBrandClick, navBarItems }: Prop
               leaveFrom="transform scale-100 opacity-100"
               leaveTo="transform scale-50 opacity-0"
             >
-              <Menu.Items className="overflow-hidden absolute right-[5px] origin-top-right mt-[30px] bg-white rounded-md">
+              <Menu.Items className="overflow-hidden absolute right-[5px] origin-top-right hover:outline-none rounded-md mt-[30px] bg-white">
                 {navBarItems.map((item) => (
                   <Menu.Item key={item.label}>
                     <button
@@ -79,7 +78,14 @@ export const NavBar = <T extends string>({ handleBrandClick, navBarItems }: Prop
               onClick={item.handleClick}
               disabled={item.label === currentSection}
             >
-              <span className="font-medium text-[16px] leading-[24px] text-white">{item.label}</span>
+              <span
+                className={clsx('text-[16px] leading-[24px] text-white transition-all', {
+                  'font-medium hover:text-gray-300': item.label !== currentSection,
+                  'font-semibold': item.label === currentSection,
+                })}
+              >
+                {item.label}
+              </span>
             </button>
           ))}
 

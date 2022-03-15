@@ -6,11 +6,12 @@ module.exports = {
   theme: {
     fontFamily: {
       primary: ['Jost'],
-      secondary: ['Cabin'],
+      secondary: ['Dosis'],
     },
     extend: {
       colors: {
         primary: '#F36B50',
+        secondary: '#B0FBBC',
       },
     },
   },

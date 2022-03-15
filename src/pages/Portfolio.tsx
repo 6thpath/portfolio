@@ -10,6 +10,8 @@ import { Sections } from 'types/enums'
 import { Background } from 'components/Background'
 import { NavBar } from 'components/Navbar'
 import { Section } from 'components/Section'
+import { Contacts } from 'components/Contacts'
+import { About } from './portfolio/About'
 
 const Portfolio: React.FC = () => {
   useWindowResize()
@@ -48,24 +50,17 @@ const Portfolio: React.FC = () => {
     }
   }, [])
 
-  const sections = [
-    {
-      label: Sections.About,
-      handleClick: () => scrollTo(Sections.About),
-    },
-    {
-      label: Sections.Projects,
-      handleClick: () => scrollTo(Sections.Projects),
-    },
-    {
-      label: Sections.Resume,
-      handleClick: () => scrollTo(Sections.Resume),
-    },
-    {
-      label: Sections.Contact,
-      handleClick: () => scrollTo(Sections.Contact),
-    },
-  ]
+  const withHeadingSections = [Sections.Projects]
+  const sectionBody = {
+    [Sections.About]: <About />,
+    [Sections.Projects]: null,
+  }
+  const sections = Object.values(Sections).map((section) => ({
+    label: section,
+    withHeading: withHeadingSections.indexOf(section) > -1,
+    content: sectionBody[section],
+    handleClick: () => scrollTo(section),
+  }))
 
   return (
     <Background>
@@ -74,9 +69,13 @@ const Portfolio: React.FC = () => {
         navBarItems={sections.map(({ label, handleClick }) => ({ label, handleClick }))}
       />
 
+      <Contacts />
+
       <main className="h-screen" ref={containerRef}>
-        {sections.map((section) => (
-          <Section key={section.label} id={section.label} />
+        {sections.map(({ label, withHeading, content }) => (
+          <Section key={label} id={label} withHeading={withHeading}>
+            {content}
+          </Section>
         ))}
       </main>
     </Background>
