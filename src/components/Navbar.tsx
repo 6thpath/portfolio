@@ -27,12 +27,10 @@ export const NavBar = <T extends string>({ handleBrandClick, navBarItems }: Prop
     <header className="container h-[60px] fixed top-[16px] md:top-[30px] inset-x-0 z-10 flex justify-between items-center mx-auto px-[16px] transition-all">
       <div className="flex justify-start items-center">
         <div
-          className="cursor-pointer w-[60px] h-[60px] flex justify-center items-center rounded-[2px] bg-primary"
+          className="cursor-pointer select-none w-[60px] h-[60px] flex justify-center items-center rounded-[2px] font-secondary font-bold text-[12px] leading-[16px] text-white bg-primary"
           onClick={handleBrandClick}
         >
-          <span className="select-none font-secondary font-bold text-[12px] leading-[16px] text-white">
-            <sixth-path />
-          </span>
+          <sixth-path />
         </div>
       </div>
 
