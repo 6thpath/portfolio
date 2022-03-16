@@ -1,17 +1,10 @@
-import Scrollbar from 'smooth-scrollbar'
-
 import { ContactType } from 'types/enums'
 import { information } from 'data/information'
 
 import { ReactComponent as IconGithub } from 'assets/svg/github.svg'
 import { ReactComponent as IconLinkedIn } from 'assets/svg/linkedin.svg'
-import { useEffect } from 'react'
 
-type Props = {
-  scrollRef?: Scrollbar
-}
-
-export const Contacts: React.FC<Props> = ({ scrollRef }) => {
+export const Contacts: React.FC = () => {
   const contacts = [
     {
       type: ContactType.Github,
@@ -26,12 +19,6 @@ export const Contacts: React.FC<Props> = ({ scrollRef }) => {
       href: information.profile.linkedIn.url,
     },
   ]
-
-  useEffect(() => {
-    if (scrollRef) {
-      console.log(scrollRef)
-    }
-  }, [scrollRef])
 
   return (
     <div className="pointer-events-none container fixed bottom-[20px] md:top-[40%] inset-x-0 z-10 mx-auto px-[16px] transition-all">

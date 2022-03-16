@@ -1,5 +1,4 @@
 import { useRef, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
 
 import Scrollbar from 'smooth-scrollbar'
 
@@ -7,17 +6,15 @@ import { useWindowResize } from 'hooks/useWindowResize'
 import { easeInOutCubic } from 'utils/easing'
 import { Sections } from 'types/enums'
 
-import { Background } from 'components/Background'
-import { NavBar } from 'components/Navbar'
-import { Section } from 'components/Section'
+import { ReusableBackground, ReusableSection } from 'components/reusable'
+import { NavBar } from 'components/NavBar'
 import { Contacts } from 'components/Contacts'
-import { About } from './portfolio/About'
+import { About } from 'pages/portfolio/About'
+import { Projects } from 'pages/portfolio/Projects'
 
 const Portfolio: React.FC = () => {
   useWindowResize()
 
-  const location = useLocation()
-  const navigate = useNavigate()
   const containerRef = useRef<HTMLElement>(null)
   const scrollRef = useRef<Scrollbar>()
 
@@ -26,14 +23,6 @@ const Portfolio: React.FC = () => {
 
     if (scrollRef.current && element) {
       scrollRef.current.scrollTo(0, element.offsetTop, 250, { easing: easeInOutCubic })
-    }
-  }
-
-  function onBrandClick() {
-    if (location.pathname !== '/') {
-      navigate('/')
-    } else {
-      scrollTo(Sections.About)
     }
   }
 
@@ -53,29 +42,28 @@ const Portfolio: React.FC = () => {
   const withHeadingSections = [Sections.Projects]
   const sectionBody = {
     [Sections.About]: <About />,
-    [Sections.Projects]: null,
+    [Sections.Projects]: <Projects />,
   }
   const sections = Object.values(Sections).map((section) => ({
     label: section,
     withHeading: withHeadingSections.indexOf(section) > -1,
     content: sectionBody[section],
-    onClick: () => scrollTo(section),
   }))
 
   return (
-    <Background>
-      <NavBar onBrandClick={onBrandClick} navBarItems={sections.map(({ label, onClick }) => ({ label, onClick }))} />
+    <ReusableBackground>
+      <NavBar scrollTo={scrollTo} />
 
       <Contacts />
 
       <main className="h-screen" ref={containerRef}>
         {sections.map(({ label, withHeading, content }) => (
-          <Section key={label} id={label} withHeading={withHeading}>
+          <ReusableSection key={label} id={label} withHeading={withHeading}>
             {content}
-          </Section>
+          </ReusableSection>
         ))}
       </main>
-    </Background>
+    </ReusableBackground>
   )
 }
 

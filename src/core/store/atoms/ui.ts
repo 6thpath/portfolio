@@ -2,7 +2,6 @@ import { atom } from 'recoil'
 
 import { Sections } from 'types/enums'
 
-// ? Portfolio
 export const currentSectionState = atom({
   key: 'ui/portfolio/currentSection',
   default: Sections.About,
