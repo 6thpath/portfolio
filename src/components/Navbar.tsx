@@ -25,14 +25,14 @@ export const NavBar = <T extends string>({ onBrandClick, navBarItems }: Props<T>
   const borderRightPosition = (totalItems - 1 - navBarItems.findIndex((item) => item.label === currentSection)) * 100
 
   return (
-    <header className="container h-[60px] fixed top-[16px] md:top-[30px] inset-x-0 z-10 flex justify-between items-center mx-auto px-[16px] transition-all">
+    <header className="container fixed top-[16px] md:top-[30px] inset-x-0 z-10 flex justify-between items-center mx-auto px-[16px] transition-all">
       <div className="flex justify-start items-center">
         <Branding onClick={onBrandClick} />
       </div>
 
       <div className="relative flex md:hidden justify-end items-center">
         <Menu>
-          <Menu.Button className="w-[60px] h-[60px] flex justify-center items-center focus:outline-none text-primary">
+          <Menu.Button className="w-[70px] h-[70px] flex justify-center items-center focus:outline-none text-primary">
             <IconMenu width={40} height={40} />
           </Menu.Button>
 

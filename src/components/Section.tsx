@@ -41,7 +41,7 @@ export const Section: React.FC<Props> = ({ children, id, withHeading }) => {
 
   return (
     <section
-      className="min-h-screen container flex flex-col mx-auto pt-[92px] px-[16px] pb-[80px] md:pb-[60px] lg:px-[200px] transition-all"
+      className="min-h-screen container flex flex-col mx-auto pt-[102px] px-[16px] pb-[80px] md:pb-[60px] lg:px-[200px] transition-all"
       id={id}
     >
       <div className={clsx('select-none h-full flex items-center gap-[16px] mb-[20px]', { hidden: !withHeading })}>

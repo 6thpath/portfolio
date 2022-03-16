@@ -10,5 +10,5 @@ html {
 }
 
 body {
-  @apply m-0 font-primary overscroll-y-contain;
+  @apply m-0 font-primary overscroll-contain;
 }

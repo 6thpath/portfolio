@@ -35,7 +35,7 @@ export const Contacts: React.FC<Props> = ({ scrollRef }) => {
 
   return (
     <div className="pointer-events-none container fixed bottom-[20px] md:top-[40%] inset-x-0 z-10 mx-auto px-[16px] transition-all">
-      <div className="pointer-events-auto w-full md:w-[60px] flex md:flex-col justify-end items-center gap-[20px]">
+      <div className="pointer-events-auto w-full md:w-[70px] flex md:flex-col justify-end items-center gap-[20px]">
         {contacts.map(({ type, Component, tooltip, href }) => (
           <a
             className="cursor-pointer w-[40px] h-[40px] flex justify-center items-center text-white hover:text-gray-300"

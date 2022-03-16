@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import lottie, { AnimationItem } from 'lottie-web'
+import clsx from 'clsx'
 
-import eyeLoader from 'assets/lottie/white-eye.json'
+import watchingEye from 'assets/lottie/white-eye.json'
 import { Transition } from '@headlessui/react'
 
 type Props = {
@@ -31,7 +32,8 @@ export const Branding: React.FC<Props> = ({ onClick }) => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            animationData: eyeLoader,
+            animationData: watchingEye,
+            name: 'watchingEye',
           })
           animated.setSpeed(0.25)
           animated.addEventListener('enterFrame', () => {
@@ -39,7 +41,6 @@ export const Branding: React.FC<Props> = ({ onClick }) => {
               setBrandingType(randomBrandingType())
             }
           })
-
           animatedLogoRef.current = animated
 
           animated.goToAndPlay(4, true)
@@ -64,7 +65,11 @@ export const Branding: React.FC<Props> = ({ onClick }) => {
 
   return (
     <div
-      className="cursor-pointer select-none w-[60px] h-[60px] flex flex-col justify-center items-center rounded-[2px] font-secondary font-bold text-[12px] leading-[16px] text-white bg-primary"
+      className={clsx(
+        'cursor-pointer select-none w-[70px] h-[70px] flex flex-col justify-center items-center',
+        'rounded-[2px] hover:rounded-[6px] transition-all duration-75 ease-in',
+        'font-secondary font-bold text-[13px] leading-[18px] text-white bg-primary'
+      )}
       onClick={onClick}
     >
       <Transition

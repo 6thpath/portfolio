@@ -3,10 +3,11 @@ declare module '@lottiefiles/lottie-interactivity' {
     visibility?: number[]
     type?: string
     frames?: number[] | string
+    forceFlag?: boolean
   }
 
   interface Options {
-    player: string
+    player: string | object
     mode: 'cursor' | 'scroll' | 'chain'
     actions: Action[]
   }
