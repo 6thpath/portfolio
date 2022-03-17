@@ -28,10 +28,11 @@ export const NavBar: React.FC<Props> = ({ scrollTo }) => {
       } else {
         debouncedScrollTo(Sections.About)
       }
-    } else if (event.detail === 3) {
+    } else if (event.detail === 2) {
       debouncedScrollTo.cancel()
+    } else if (event.detail === 5) {
       if (!document.documentElement.classList.contains('dark')) {
-        setPowerMode({ status: 'activating', level: 0 })
+        setPowerMode({ activated: true, level: 0 })
       }
     }
   }

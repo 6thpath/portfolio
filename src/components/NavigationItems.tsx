@@ -17,14 +17,14 @@ export const NavigationItems: React.FC<Props> = ({ scrollTo }) => {
   const navigate = useNavigate()
 
   const activeItem = useRecoilValue(currentSectionState)
-  const { status } = useRecoilValue(powerModeState)
+  const { activated } = useRecoilValue(powerModeState)
 
   const navBarItems = [
     ...Object.values(Sections).map((section) => ({
       label: section,
       onClick: () => scrollTo(section),
     })),
-    ...(status === 'activated' ? [{ label: 'Playground', onClick: () => navigate('/playground') }] : []),
+    ...(activated ? [{ label: 'Playground', onClick: () => navigate('/playground') }] : []),
   ]
 
   const totalItems = navBarItems.length
@@ -86,7 +86,7 @@ export const NavigationItems: React.FC<Props> = ({ scrollTo }) => {
 
         {totalItems > 0 && (
           <div
-            className="pointer-events-none w-[90px] h-[30px] absolute transition-all duration-200 text-primary dark:text-dark-primary transition-all"
+            className="pointer-events-none w-[90px] h-[30px] absolute text-primary dark:text-dark-primary transition-all duration-200"
             style={{ right: borderRightPosition }}
           >
             <FocusOrnament />

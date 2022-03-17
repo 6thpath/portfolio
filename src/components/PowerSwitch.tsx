@@ -7,7 +7,7 @@ import { powerModeState } from 'core/store'
 import dayNight from 'assets/lottie/day-night.json'
 
 export const PowerSwitch: React.FC = () => {
-  const [{ status }, setPowerMode] = useRecoilState(powerModeState)
+  const [{ activated }, setPowerMode] = useRecoilState(powerModeState)
 
   const containerRef = useRef<HTMLDivElement>(null)
   const animatedLogoRef = useRef<AnimationItem>()
@@ -20,7 +20,7 @@ export const PowerSwitch: React.FC = () => {
 
   useEffect(() => {
     if (containerRef.current) {
-      if (status === 'activating') {
+      if (activated) {
         const animated = Lottie.loadAnimation({
           container: containerRef.current,
           renderer: 'svg',
@@ -34,27 +34,26 @@ export const PowerSwitch: React.FC = () => {
         animated.addEventListener('enterFrame', () => {
           if (animated.currentFrame >= 48 && animated.currentFrame < 50) {
             animated.pause()
-            setPowerMode({ status: 'activated', level: 0 })
           } else if (animated.currentFrame >= 100) {
-            setPowerMode({ status: 'off' })
+            setPowerMode({ activated: false })
           }
         })
 
         animatedLogoRef.current = animated
 
         animated.goToAndPlay(0, true)
-      } else if (status === 'off') {
+      } else {
         if (animatedLogoRef.current) {
           animatedLogoRef.current.destroy()
           animatedLogoRef.current = undefined
         }
       }
     }
-  }, [status, setPowerMode])
+  }, [activated, setPowerMode])
 
   return (
     <div
-      className={clsx('cursor-pointer h-[70px]', { hidden: status === 'off' })}
+      className={clsx('cursor-pointer h-[70px]', { hidden: !activated })}
       ref={containerRef}
       onClick={onTogglePowerMode}
     />

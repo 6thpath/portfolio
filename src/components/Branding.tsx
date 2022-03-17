@@ -72,7 +72,7 @@ export const Branding: React.FC<Props> = ({ onClick }) => {
       <div
         className={clsx(
           'cursor-pointer select-none w-[70px] h-[70px] flex flex-col justify-center items-center rounded-[2px]',
-          'font-secondary font-bold text-[13px] leading-[18px] bg-primary dark:bg-dark-primary dark:text-gray-900'
+          'font-secondary font-bold text-[13px] leading-[18px] bg-primary dark:bg-dark-primary dark:text-gray-900 transition-all'
         )}
         onClick={onClick}
       >

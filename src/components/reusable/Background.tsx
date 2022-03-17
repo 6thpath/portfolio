@@ -15,6 +15,12 @@ enum DecorationType {
   Square = 'square',
 }
 
+const decoration = {
+  [DecorationType.Circle]: Circle,
+  [DecorationType.Rectangle]: Rectangle,
+  [DecorationType.Square]: Square,
+}
+
 type Props = {
   offset?: number
   decorations?: number
@@ -34,23 +40,28 @@ export const Background: React.FC<Props> = ({
   const scene = useRef<HTMLDivElement>(null)
   const parallaxRef = useRef<Parallax>()
 
-  const ratio = 1 / decorationTypes.length
-  const totalCircles = useMemo(() => Math.ceil(Math.random() * (decorations * ratio)), [decorations, ratio])
-  const totalRectangles = useMemo(() => Math.ceil(Math.random() * (decorations * ratio)), [decorations, ratio])
-  const totalSquares = useMemo(
-    () => decorations - totalCircles - totalRectangles,
-    [decorations, totalCircles, totalRectangles]
-  )
+  const decorationsConfig = useMemo(() => {
+    const totalDecorationTypes = decorationTypes.length
+    let sum = 0
 
-  const decorationsConfig = useMemo(
-    () =>
-      [
-        { type: DecorationType.Circle, Component: Circle, total: totalCircles },
-        { type: DecorationType.Rectangle, Component: Rectangle, total: totalRectangles },
-        { type: DecorationType.Square, Component: Square, total: totalSquares },
-      ].filter(({ type, total }) => decorationTypes.indexOf(type) > -1 && total > 0),
-    [totalCircles, totalRectangles, totalSquares, decorationTypes]
-  )
+    return decorationTypes.map((type, index) => {
+      if (totalDecorationTypes === 1) {
+        return { type, Component: decoration[type], total: decorations }
+      } else if (index === totalDecorationTypes - 1) {
+        return { type, Component: decoration[type], total: decorations - sum }
+      } else {
+        const total = Math.ceil(Math.random() * (decorations / totalDecorationTypes))
+
+        sum += total
+
+        return {
+          type,
+          Component: decoration[type],
+          total,
+        }
+      }
+    })
+  }, [decorationTypes, decorations])
 
   useEffect(() => {
     if (scene.current && parallaxRef.current === undefined && width >= 768) {
@@ -89,7 +100,10 @@ export const Background: React.FC<Props> = ({
                   top: ~~(Math.random() * (height * (1 - offset * 2)) + height * offset),
                 }}
               >
-                <Component stroke={decorationColors[~~(Math.random() * decorationColors.length)]} />
+                <Component
+                  className={clsx('dark:!stroke-dark-primary', {})}
+                  style={{ stroke: decorationColors[~~(Math.random() * decorationColors.length)] }}
+                />
               </div>
             ))}
           </div>

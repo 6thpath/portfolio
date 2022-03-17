@@ -45,8 +45,8 @@ export const Section: React.FC<Props> = ({ children, id, withHeading }) => {
       id={id}
     >
       <div className={clsx('select-none h-full flex items-center gap-[16px] mb-[20px]', { hidden: !withHeading })}>
-        <div className="w-[40px] h-[3px] rounded-[5px] bg-primary" />
-        <span className="font-bold text-[24px] leading-[36px] text-secondary">{id}</span>
+        <div className="w-[40px] h-[3px] rounded-[5px] bg-primary dark:bg-dark-primary" />
+        <span className="font-bold text-[24px] leading-[36px] text-secondary dark:text-gray-300">{id}</span>
       </div>
 
       {children}

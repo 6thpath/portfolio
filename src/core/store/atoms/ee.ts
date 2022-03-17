@@ -1,19 +1,19 @@
 import { atom } from 'recoil'
 
-type powerModeStaus = 'off' | 'activating' | 'activated'
-
-export const powerModeState = atom<{ status: powerModeStaus; level?: number }>({
+export const powerModeState = atom<{ activated: boolean; level?: number }>({
   key: 'ee/powerMode',
   default: {
-    status: 'off',
+    activated: false,
     level: undefined,
   },
   effects: [
     ({ onSet }) => {
       onSet((newValue) => {
-        if (newValue.status === 'activating') {
-          document.documentElement.classList.add('dark')
-        } else if (newValue.status === 'off') {
+        if (newValue.activated) {
+          setTimeout(() => {
+            document.documentElement.classList.add('dark')
+          }, 300)
+        } else {
           document.documentElement.classList.remove('dark')
         }
       })
