@@ -51,8 +51,8 @@ export const NavigationItems: React.FC<Props> = ({ scrollTo }) => {
                 <Menu.Item key={item.label}>
                   <button
                     className={clsx('w-full h-[40px] flex justify-center items-center px-[20px]', {
-                      'bg-primary dark:bg-gray-500': item.label === activeItem,
-                      'text-gray-900': item.label !== activeItem,
+                      'bg-primary dark:bg-slate-500': item.label === activeItem,
+                      'text-slate-900': item.label !== activeItem,
                     })}
                     onClick={item.onClick}
                     disabled={item.label === activeItem}
@@ -76,7 +76,7 @@ export const NavigationItems: React.FC<Props> = ({ scrollTo }) => {
           >
             <span
               className={clsx('text-[16px] leading-[24px] font-medium transition-all', {
-                'hover:text-gray-300': item.label !== activeItem,
+                'hover:text-slate-300': item.label !== activeItem,
               })}
             >
               {item.label}

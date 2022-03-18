@@ -81,7 +81,7 @@ export const Background: React.FC<Props> = ({
       className={clsx(
         'no-scrollbar w-full h-screen relative overflow-hidden transition-all',
         'bg-[linear-gradient(158.86deg,#1c2a34_10.36%,#111a20_49.58%,#111a20_49.58%)]',
-        'dark:bg-[linear-gradient(158.86deg,#0e0e0e_10.36%,#000000_49.58%,#000000_49.58%)]'
+        'dark:bg-[linear-gradient(158.86deg,#0f172a_10.36%,#000000_49.58%,#000000_49.58%)]'
       )}
     >
       <div className="w-full h-full absolute opacity-70" ref={scene}>

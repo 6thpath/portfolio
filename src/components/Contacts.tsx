@@ -25,7 +25,7 @@ export const Contacts: React.FC = () => {
       <div className="pointer-events-auto w-full md:w-[70px] flex md:flex-col justify-end items-center gap-[20px]">
         {contacts.map(({ type, Component, tooltip, href }) => (
           <a
-            className="cursor-pointer w-[40px] h-[40px] flex justify-center items-center text-white hover:text-gray-300"
+            className="cursor-pointer w-[40px] h-[40px] flex justify-center items-center text-white hover:text-slate-300"
             key={type}
             title={tooltip}
             href={href}
